@@ -81,6 +81,11 @@ public class Authenticator {
 			++i;
 			System.out.println(i + "; " + news.toString());
 		}
+
+		long initTime = System.currentTimeMillis();
+		System.out.println("Start saving news to solr");
+		SolrManager.saveNews2Solr(newsList);
+		System.out.println("End saving news to solr Time=" + (System.currentTimeMillis() - initTime));
 		System.out.println("ENDDDDDDDDDDDDDD!!!!!!!!!!!!!!!!!!!!!");
 	}
 
