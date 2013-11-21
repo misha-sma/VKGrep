@@ -36,6 +36,15 @@ public class Parser {
 					calendar.set(Calendar.MINUTE, Integer.parseInt(parts[1]));
 					calendar.set(Calendar.SECOND, 0);
 					time = (int) (calendar.getTimeInMillis() / 1000);
+				} else if (timeStr.startsWith("вчера в")) {
+					timeStr = timeStr.substring(7).trim();
+					String[] parts = timeStr.split(":");
+					Calendar calendar = Calendar.getInstance();
+					calendar.setTimeInMillis(System.currentTimeMillis());
+					calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(parts[0]));
+					calendar.set(Calendar.MINUTE, Integer.parseInt(parts[1]));
+					calendar.set(Calendar.SECOND, 0);
+					time = (int) (calendar.getTimeInMillis() / 1000) - 3600 * 24;
 				} else {
 					System.out.println("ACHTUNG!!! time=" + timeStr);
 				}

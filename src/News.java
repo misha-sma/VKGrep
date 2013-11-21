@@ -15,8 +15,8 @@ public class News {
 
 	public News(String author, String text, int time) {
 		this.id = UUID.randomUUID().toString();
-		this.author = author;
-		this.text = text;
+		this.author = Util.unEscapeHtml(author);
+		this.text = Util.unEscapeHtml(text);
 		this.time = time;
 	}
 
@@ -33,4 +33,5 @@ public class News {
 		doc.addField("time", time);
 		return doc;
 	}
+
 }
